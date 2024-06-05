@@ -4,7 +4,7 @@
 */
 #include <iostream>
 //-------------------------------------------------------------
-//Definici髇 de la clase Node----------------------------------
+//Definici贸n de la clase Node----------------------------------
 //-------------------------------------------------------------
 template<typename T>
 class Node {
@@ -32,7 +32,7 @@ private:
 	Node<T>* prev;
 };
 //-------------------------------------------------------------
-//Definici髇 de la clase LinkedList----------------------------
+//Definici贸n de la clase LinkedList----------------------------
 //-------------------------------------------------------------
 template<typename T>
 class DoubleLinkedList {
@@ -52,11 +52,11 @@ public:
 			current = nextNode;
 		}
 	}
-//--------M閠odos
+//--------M茅todos
 	//---------------------------------------------------------
 	//IMPRIMIR-------------------------------------------------
 	//---------------------------------------------------------
-	//----M閠odo para imprimir la lista
+	//----M茅todo para imprimir la lista
 	void print_list() const {
 		Node<T>* temp = head;					//puntero temporal
 		std::cout << "nullptr" << " <-> "; 		//Es el previus del primer nodo
@@ -66,7 +66,7 @@ public:
 		}
 		std::cout << "nullptr\n" << std::endl; 	//Es el next del ultimo nodo
 	}
-	//----M閠odo para imprimir la lista en reversa
+	//----M茅todo para imprimir la lista en reversa
 	void print_reverse() const{
 		Node<T>* temp = tail;					//puntero temporal
 		std::cout<<"nullptr"<< " <-> ";  		//Es el next del ultimo nodo
@@ -80,7 +80,7 @@ public:
 	//---------------------------------------------------------
 	//INSERTAR-------------------------------------------------
 	//---------------------------------------------------------
-	// M閠odo para insertar al frente
+	// M茅todo para insertar al frente
 	void push_front(T data) {
 		Node<T>* newNode = new Node<T>(data); 	//Creo un nuevo nodo con el dato
 		if(head == nullptr){					//Si no hay ningun nodo
@@ -88,13 +88,13 @@ public:
 			tail = newNode;						//al mismo nodo
 			return;
 		}
-												//Si hay m醩 de un nodo
+												//Si hay m谩s de un nodo
 		head -> setPrev(newNode);				//Asigno el previo de head a newNode
 		newNode->setNext(head);					//Asigno el next de newNode a head
 		head = newNode;							//Asignamos head al nuevo nodo
 		return;
 	}
-	// M閠odo para insertar por atras
+	// M茅todo para insertar por atras
 	void push_back(T data) {
 		Node<T>* newNode = new Node<T>(data);	//Creo un nuevo nodo con el dato
 		if(head == nullptr){					//Si no hay ningun dato
@@ -102,7 +102,7 @@ public:
 			tail = newNode;						//al mismo nodo
 			return;
 		}
-												//Si hay m醩 de un nodo
+												//Si hay m谩s de un nodo
 		tail -> setNext(newNode);				//Asigno el next de tail a newNode
 		newNode->setPrev(tail);					//Asigno el previo de newNode a tail
 		tail = newNode;							//Asignamos tail al nuevo nodo
@@ -111,7 +111,7 @@ public:
 	//---------------------------------------------------------
 	//ELIMINAR-------------------------------------------------
 	//---------------------------------------------------------
-	// M閠odo para eliminar por frente
+	// M茅todo para eliminar por frente
 	void pop_front() {
 		if(head == nullptr ){					//Si no hay ningun nodo
 			return;								//Retornar ya que no hay nodo por eliminar
@@ -123,14 +123,14 @@ public:
 			delete temp;						//Elimino el unico nodo
 			return;
 		}
-												//Si hay m醩 de un nodo
+												//Si hay m谩s de un nodo
 		Node<T>* temp = head;					//Asigno un temporal para el head(primer nodo)
 		head=head->getNext();					//Cambios el head al segundo nodo
 		head->setPrev(nullptr);					//Este nuevo head asignamos su previo a nulo
 		delete temp;							//Eliminamos el temporal apuntado a al primer nodo
 		return;
 	}
-	// M閠odo para eliminar por atras
+	// M茅todo para eliminar por atras
 	void pop_back() {
 		if(head == nullptr ){					//Si no hay ningun nodo
 			return;								//Retornar ya que no hay nodo por eliminar
@@ -142,7 +142,7 @@ public:
 			delete temp;						//Elimino el unico nodo
 			return;
 		}
-		//Si hay m醩 de un nodo
+		//Si hay m谩s de un nodo
 		Node<T>* temp = tail;					//Asigno un temporal para el tail(ultimo nodo)
 		tail=tail->getPrev();					//Cambios el tail al penultimo nodo
 		tail->setNext(nullptr);					//Este nuevo tail asignamos su next a nulo
@@ -152,7 +152,7 @@ public:
 	//---------------------------------------------------------
 	//GETTER---------------------------------------------------
 	//---------------------------------------------------------
-	// M閠odo para get en front
+	// M茅todo para get en front
 	T getfront() const {
 		try{
 			if(head == nullptr){
@@ -160,12 +160,12 @@ public:
 			}
 			return head -> getData();
 		} catch(const std::exception& e){
-			//Manejo de la excepci髇
-			std::cerr <<"Excepci髇 en getData(): "<<e.what()<<std::endl;
+			//Manejo de la excepci贸n
+			std::cerr <<"Excepci贸n en getData(): "<<e.what()<<std::endl;
 			return T();
 		}
 	}
-	// M閠odo para get en back
+	// M茅todo para get en back
 	T getback() const {
 		try{
 			if(head == nullptr ){
@@ -173,15 +173,15 @@ public:
 			}
 			return tail -> getData();
 		} catch(const std::exception& e){
-			//Manejo de la excepci髇
-			std::cerr <<"Excepci髇 en getData(): "<<e.what()<<std::endl;
+			//Manejo de la excepci贸n
+			std::cerr <<"Excepci贸n en getData(): "<<e.what()<<std::endl;
 			return T();
 		}
 	}
 	//---------------------------------------------------------
 	//SETTER---------------------------------------------------
 	//---------------------------------------------------------
-	// M閠odo para set en front
+	// M茅todo para set en front
 	void setfront(T data) {
 		try{
 			if(head == nullptr){
@@ -190,12 +190,12 @@ public:
 			head -> setData(data);
 			return;
 		} catch(const std::exception& e){
-			//Manejo de la excepci髇
-			std::cerr <<"Excepci髇 en setData(): "<<e.what()<<std::endl;
+			//Manejo de la excepci贸n
+			std::cerr <<"Excepci贸n en setData(): "<<e.what()<<std::endl;
 			return;
 		}
 	}
-	// M閠odo para set en back
+	// M茅todo para set en back
 	void setback(T data) {
 		try{
 			if(head == nullptr ){
@@ -204,8 +204,8 @@ public:
 			tail -> setData(data);
 			return ;
 		} catch(const std::exception& e){
-			//Manejo de la excepci髇
-			std::cerr <<"Excepci髇 en setData(): "<<e.what()<<std::endl;
+			//Manejo de la excepci贸n
+			std::cerr <<"Excepci贸n en setData(): "<<e.what()<<std::endl;
 			return ;
 		}
 	}
@@ -228,7 +228,7 @@ public:
 		}
 	}
 	//---------------------------------------------------------
-	//TAMA袿-----------------------------
+	//TAMA脩O-----------------------------
 	//---------------------------------------------------------
 	int sizeDoubleList(){
 		Node<T>* temp = head;
@@ -270,8 +270,8 @@ public:
 			}
 			return;
 		} catch(const std::exception& e){
-			//Manejo de la excepci髇
-			std::cerr <<"Excepci髇 de insercion: "<<e.what()<<std::endl;
+			//Manejo de la excepci贸n
+			std::cerr <<"Excepci贸n de insercion: "<<e.what()<<std::endl;
 			return;
 		}
 	}
@@ -306,8 +306,8 @@ public:
 			
 			return;
 		} catch(const std::exception& e){
-			//Manejo de la excepci髇
-			std::cerr <<"Excepci髇 de eliminacion: "<<e.what()<<std::endl;
+			//Manejo de la excepci贸n
+			std::cerr <<"Excepci贸n de eliminacion: "<<e.what()<<std::endl;
 			return;
 		}
 	}
@@ -338,8 +338,8 @@ public:
 			}
 			return contador;
 		} catch(const std::exception& e){
-			//Manejo de la excepci髇
-			std::cerr <<"Excepci髇 de insercion: "<<e.what()<<std::endl;
+			//Manejo de la excepci贸n
+			std::cerr <<"Excepci贸n de insercion: "<<e.what()<<std::endl;
 			return -1;
 		}
 	}
